@@ -44,21 +44,24 @@ def afficher_labyrinthe(tab):
 pass
 def deplacer_vers(i,j, case):
     """fonction récursive d'exploration"""
-    if i < 0 or i >= len(case) or j < 0 or j >= len(case[0]):#pour pas sortir du laby
-        return
-    if case[i][j] == 'X' or case[i][j] == '.': # pour pas revenir sur une case déjà visitée ou un mur histoire d'aller plus vite
-        return  False
+    """if i < 0 or i >= len(case) or j < 0 or j >= len(case[0]):#pour pas sortir du laby
+        return False"""
+    """if case[i][j] == 'X' or case[i][j] == '.': # pour pas revenir sur une case déjà visitée ou un mur histoire d'aller plus vite
+        return  False"""
     if case[i][j] == 'S':
         print("Solution trouvée")
-        return True
-    elif case[i][j] == '' or case[i][j] == 'E':
+        afficher_labyrinthe(case)
+        """return True"""
+    """elif case[i][j] == '' or case[i][j] == 'E':
+            case[i][j] = '.' # on marque la case comme visitée"""
+    if case[i][j]=="E" or case[i][j]==" ":
         case[i][j] = '.' # on marque la case comme visitée
-        if not deplacer_vers(i-1,j,case) and not deplacer_vers(i+1,j,case) and not deplacer_vers(i,j-1,case) and not deplacer_vers(i,j+1,case):
-            case[i][j] = '' # on marque la case comme non visitée pour les autres chemins   
-        else: 
-            return True
+        deplacer_vers(i-1, j, case)
+        deplacer_vers(i+1, j, case)
+        deplacer_vers(i, j-1, case)
+        deplacer_vers(i, j+1, case)
+        case[i][j] = " "
 # programme principal
-"""afficher_labyrinthe(labyrinthe)
+afficher_labyrinthe(labyrinthe)
 print("Solution(s)")
 deplacer_vers(i0,j0,labyrinthe) # on lance l'exploration à partir de E
-afficher_labyrinthe(labyrinthe)"""

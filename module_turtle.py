@@ -2,10 +2,12 @@ import turtle as t
 
 def showLabyrinthe(labyrinthe,cote,nli,ncol):
     """fonction qui trace le labyrinthe"""
+    t.speed(20)
     cadre(nli,ncol,cote)
     paroiesVerticales(labyrinthe,nli,ncol,cote)
     paroiesHorizontales(labyrinthe,nli,ncol,cote)
     t.hideturtle()
+    t.done()
 
 def cadre(nli,ncol,cote):
     """ fonction qui trace les parois externes"""
