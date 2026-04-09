@@ -17,24 +17,36 @@ def BFS(g,source):
                 p.enfiler(v)
                 vus.add(v)
     return lst
-def PlusCourtChemin(g,u,s,vus=None):
+"""def PlusCourtChemin(g,u,s,vus=None):
+    Fonctionne mais pas opti
     if vus is None:#si c le depart
         vus=set()
     if u==s:#si c la sortie
         return [u]
-    vus.add(u)
+    vus=vus | {u}#evite de bloquer des possiblité aux autres chemins
     min_chemin=None
     for v in g.voisins(u):
         if v not in vus:
             chemin_v=PlusCourtChemin(g,v,s,vus)
             if chemin_v:
-                chemin_v+=[v]
-                if min_chemin:
-                    if len(chemin_v)<len(min_chemin):
-                        min_chemin=chemin_v
-                else:
-                    min_chemin=chemin_v
-    return min_chemin
+                chemin= [u] + chemin_v
+                if min_chemin is None or len(chemin)<len(min_chemin):
+                    min_chemin=chemin
+    return min_chemin"""
+def PlusCourtChemin(g,u,s):#parcours en largeur
+    p=File()
+    vus={u}
+    p.enfiler((u,[u]))#on met u et le chemin pour y arriver dans la file
+    while not p.est_vide():
+        u,chemin=p.defiler()
+        if u==s:#si c la sortie
+            return chemin
+        for v in g.voisins(u):#sinon on explore les voisins
+            if v not in vus:
+                vus.add(v)
+                p.enfiler((v,chemin+[v]))
+    return None
+
 def showParcours(laby, vus, cote, nli, ncol):
     showLabyrinthe(laby, cote, nli, ncol)
     t.color("red")
@@ -46,4 +58,4 @@ def showParcours(laby, vus, cote, nli, ncol):
 laby=labyrinthe
 print(BFS(laby,(1,1)))
 
-showParcours(laby,PlusCourtChemin(laby,(1,1),(2,6)),50,4,8)
+showParcours(laby,PlusCourtChemin(laby,(1,1),(4,8)),50,4,8)
