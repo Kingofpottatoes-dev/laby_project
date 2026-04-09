@@ -14,7 +14,8 @@ class Graphe:
         self.adj[u].append(v)
         if not oriente:
             self.adj[v].append(u)
-
+    def voisins(self,s):
+        return self.adj[s]
     def afficher(self):
         for sommet in self.adj:
             print(sommet, "->", self.adj[sommet])
