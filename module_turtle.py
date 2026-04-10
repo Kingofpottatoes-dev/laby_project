@@ -7,6 +7,7 @@ def showLabyrinthe(labyrinthe,cote,nli,ncol):
     paroiesVerticales(labyrinthe,nli,ncol,cote)
     paroiesHorizontales(labyrinthe,nli,ncol,cote)
     t.hideturtle()
+    print("laby construit")
 
 def cadre(nli,ncol,cote):
     """ fonction qui trace les parois externes"""

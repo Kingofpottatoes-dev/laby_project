@@ -34,17 +34,17 @@ def BFS(g,source):
                     min_chemin=chemin
     return min_chemin"""
 def PlusCourtChemin(g,u,s):#parcours en largeur
-    p=File()
+    f=File()
     vus={u}
-    p.enfiler((u,[u]))#on met u et le chemin pour y arriver dans la file
-    while not p.est_vide():
-        u,chemin=p.defiler()
+    f.enfiler((u,[u]))#on met u et le chemin pour y arriver dans la file
+    while not f.est_vide():
+        u,chemin=f.defiler()
         if u==s:#si c la sortie
             return chemin
         for v in g.voisins(u):#sinon on explore les voisins
             if v not in vus:
                 vus.add(v)
-                p.enfiler((v,chemin+[v]))
+                f.enfiler((v,chemin+[v]))
     return None
 
 def showParcours(laby, vus, cote, nli, ncol):
@@ -56,6 +56,5 @@ def showParcours(laby, vus, cote, nli, ncol):
         t.dot(12)
     t.done()
 laby=labyrinthe
-print(BFS(laby,(1,1)))
 
-showParcours(laby,PlusCourtChemin(laby,(1,1),(4,8)),50,4,8)
+#showParcours(laby,PlusCourtChemin(laby,(1,1),(4,8)),50,4,8)
