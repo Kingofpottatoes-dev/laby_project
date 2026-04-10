@@ -33,6 +33,6 @@ def load_txt_as_graph(filename):
 
     return G, source, destination
 labyrinthe, depart, arrivee = load_txt_as_graph("laby2.txt")
-print(PlusCourtChemin(laby,(depart),(arrivee)))
+print(PlusCourtChemin(labyrinthe,(depart),(arrivee)))
 print(labyrinthe.adj)
-showParcours(labyrinthe,PlusCourtChemin(laby,(depart),(arrivee)), 15, 8, 23)
+showParcours(labyrinthe,PlusCourtChemin(labyrinthe,(depart),(arrivee)), 15, 8, 23)

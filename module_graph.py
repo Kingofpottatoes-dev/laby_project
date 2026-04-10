@@ -19,7 +19,7 @@ class Graphe:
     def afficher(self):
         for sommet in self.adj:
             print(sommet, "->", self.adj[sommet])
-labyrinthe = Graphe()
+"""labyrinthe = Graphe()
 for i in range(1,5):
     for j in range(1,9):
         labyrinthe.adds((i,j))
@@ -53,4 +53,4 @@ labyrinthe.adda((1,7),(1,8))
 labyrinthe.adda((4,7),(4,8))
 labyrinthe.adda((1,8),(2,8))
 labyrinthe.adda((3,8),(2,8))
-labyrinthe.adda((3,8),(4,8))
+labyrinthe.adda((3,8),(4,8))"""
